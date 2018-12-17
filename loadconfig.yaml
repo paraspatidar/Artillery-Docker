@@ -1,0 +1,29 @@
+config:
+  target: 'http://169.xxx.xxx.xxx'
+  tls:
+    rejectUnauthorized: false
+  phases:
+    - duration: 10
+      arrivalRate: 5
+  payload:
+    path: "paylod.csv"
+    fields:
+      - "var1"
+      - "var2"
+  plugins:
+    influxdb: 
+      testName: "my_load_test_case1"
+      measurementName: "Latency"
+      errorMeasurementName: "ClientSideErrors"
+      testRunId: "342-233-220"          
+      influx:
+        host: "influx2-influxdb.default"
+        username: "admin"
+        password: "admin"                
+        database: "fission_load_test_results"
+        matches: ""
+scenarios:
+  - flow:
+    - get:
+        url: "/funraw01?var1={{var1}}&var2={{var2}}"
+

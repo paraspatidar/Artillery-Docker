@@ -1,0 +1,18 @@
+config:
+  target: 'http://169.xxx.xx.xxx'
+  phases:
+    - duration: 100
+      arrivalRate: 100
+  defaults:
+    headers:
+      x-my-service-auth: '987401838271002188298567'
+scenarios:
+  - flow:
+    - get:
+        url: "/fn1"
+    - get:
+        url: "/fn2"
+    - get:
+        url: "/fn3"
+    - get:
+        url: "/fn4"

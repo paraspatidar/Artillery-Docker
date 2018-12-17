@@ -1,0 +1,26 @@
+FROM node:8-alpine
+
+VOLUME /artillery
+WORKDIR /artillery
+
+COPY * /artillery/
+
+
+ADD artilleryRun.sh /usr/local/bin/artilleryRun
+RUN chmod +x /usr/local/bin/artilleryRun
+
+
+RUN  npm config set user 0
+RUN  npm config set unsafe-perm true
+RUN npm install -g artillery
+RUN npm install -g artillery-plugin-influxdb
+
+RUN apk add man man-pages mdocml-apropos less less-doc
+RUN export PAGER=less
+RUN apk add --no-cache curl
+RUN apk add curl-doc
+RUN apropos curl | wc -l
+
+#use this if we want to run testing as soon as container creates
+#ENTRYPOINT ["artillery"]
+#CMD ["run loadconfig.yaml"]

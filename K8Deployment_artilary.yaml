@@ -1,0 +1,12 @@
+apiVersion: v1 
+kind: Pod
+metadata:
+  name: artillery
+spec:
+      containers:
+      - name: artillery
+        image: paraspatidardocker/artillery-manual
+        ports:
+        - containerPort: 80
+        command: [ "sh", "-c", "--" ]
+        args: [ "while true; do sleep 40; done;" ]
