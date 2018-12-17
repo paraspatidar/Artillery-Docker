@@ -1,4 +1,4 @@
-# Artillery-Docker
+# Artillery-Docker | Docker image for Artillery
 
 This is sample Docker file and few load testing configurations which eventually creates docker image which can be used to perform load testing based on pre-existing configuration file in image /pod.
 Further we can use **persistent volumes** or **KUBECTL CP** , to put additional configuration or load files and use them.
